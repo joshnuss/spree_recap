@@ -11,7 +11,14 @@ module SpreeRecap
     end
 
     def orders
-      @orders ||= Order.complete.order('completed_at desc').where(completed_at: @range)
+      @orders ||= Order.complete
+                       .order('completed_at desc')
+                       .where(completed_at: @range)
+    end
+
+    def shipments
+      @shipments ||= Shipment.shipped
+                             .where(shipped_at: @range)
     end
   end
 end

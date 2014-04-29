@@ -18,4 +18,12 @@ describe SpreeRecap::Summary do
 
     specify { summary.orders.should == [order1, order2] }
   end
+
+  context "shipments" do
+    let!(:shipment1) { create(:shipment, state: 'shipped', shipped_at: 1.hour.ago) }
+    let!(:shipment2) { create(:shipment, state: 'shipped', shipped_at: 2.hour.ago) }
+    let!(:old_shipment) { create(:shipment, state: 'shipped', shipped_at: 2.days.ago) }
+
+    specify { summary.shipments.should == [shipment1, shipment2] }
+  end
 end
