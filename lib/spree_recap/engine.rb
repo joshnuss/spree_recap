@@ -1,3 +1,5 @@
+require 'slim'
+
 module SpreeRecap
   class Engine < Rails::Engine
     require 'spree/core'
