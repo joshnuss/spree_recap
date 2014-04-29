@@ -12,4 +12,7 @@ desc 'Generates a dummy app for testing'
 task :test_app do
   ENV['LIB_NAME'] = 'spree_recap'
   Rake::Task['extension:test_app'].invoke
+
+  puts "Setting up spree_comments..."
+  Spree::InstallGenerator.start ["--lib_name=spree_comments", "--auto-accept", "--migrate=true", "--seed=false", "--sample=false", "--quiet"]
 end
