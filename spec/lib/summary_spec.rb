@@ -26,4 +26,19 @@ describe SpreeRecap::Summary do
 
     specify { summary.shipments.should == [shipment1, shipment2] }
   end
+
+  context "comments" do
+    let!(:comment1)    { create(:comment, created_at: 1.hour.ago) }
+    let!(:comment2)    { create(:comment, created_at: 2.hour.ago) }
+    let!(:old_comment) { create(:comment, created_at: 2.days.ago) }
+
+    context "defined" do
+      specify { summary.comments.should == [comment2, comment1]}
+    end
+
+    context "undefined" do
+      before { summary.stub(comments?: false) }
+      specify { summary.comments.should == []}
+    end
+  end
 end
