@@ -6,6 +6,10 @@ module SpreeRecap
       @range = range
     end
 
+    def comments?
+      defined? Comment
+    end
+
     def registrations
       @registrations ||= User.where(created_at: @range)
     end
@@ -25,9 +29,8 @@ module SpreeRecap
       @comments ||= comments? ? Comment.where(created_at: @range) : []
     end
 
-    def comments?
-      defined? Spree::Comment
+    def collaborators
+      @collaborators ||= comments.group_by(&:user)
     end
-
   end
 end
