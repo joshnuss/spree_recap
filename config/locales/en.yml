@@ -2,4 +2,5 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  recap_single_day: Recap for %{date}
+  recap_multiple_days: Recap for %{from} to %{to}
