@@ -8,6 +8,6 @@ describe Spree::RecapMailer do
     subject { Spree::RecapMailer.summary(1.day.ago..Time.now) }
 
     its(:from) { should == ['spree@example.com'] }
-    its(:to) { should == ['admin1@example.com', 'admin2@example.com'] }
+    its(:bcc) { should == ['admin1@example.com', 'admin2@example.com'] }
   end
 end
